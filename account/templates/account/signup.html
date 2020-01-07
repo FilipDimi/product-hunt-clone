@@ -1,5 +1,19 @@
 {% extends 'base.html' %}
 
 {% block contect %}
+    <br />
     <h1>Sign Up</h1>
+
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
+        
+        <input placeholder="Username" type="text" name="username">
+        <br /><br />
+        <input placeholder="Password" type="password" name="password1">
+        <br /><br />
+        <input placeholder="Re-type Password" type="password" name="password2">
+        <br />
+        <br />
+        <input class="btn btn-dark" type="submit">
+    </form>
 {% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block contect %}
+    <br />
+    <div class="container">
+        <h1>Add Project</h1>
+        {% if error %}
+            <h5 style="color: red; padding: .5rem 0rem;">{{ error }}</h5>
+        {% endif %}
+        <form method="POST" action="{% url 'create' %}" enctype="multipart/form">
+            <label>Title: </label><br />
+            <input type="text" name="title">
+            <br />
+            <label>URL: </label><br />
+            <input type="text" name="url">
+            <br />
+            <label>Body: </label><br />
+            <input type="textbox" name="body">
+            <br />
+            <label>Icon: </label><br />
+            <input type="file" name="icon">
+            <br />
+            <label>Image: </label><br />
+            <input type="file" name="image">
+            <br /><br />
+            <input class="btn btn-dark" type="submit" value="Add Project">
+        </form>
+    </div>
+{% endblock %}

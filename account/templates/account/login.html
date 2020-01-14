@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 
 {% block contect %}
-    <h1>Login</h1>
+
+    <br />
+    <div class="container">
+        <h1>Login</h1>
+        {% if error %}
+            <h5 style="color: red; padding: .5rem 0rem;">{{ error }}</h5>
+        {% endif %}
+        <form method="POST" action="{% url 'login' %}">
+            <input placeholder="Username" type="text" name="username">
+            <br /><br />
+            <input placeholder="Password" type="password" name="password">
+            <br />
+            <br />
+            <input class="btn btn-dark" type="submit">
+        </form>
+    </div>
 {% endblock %}

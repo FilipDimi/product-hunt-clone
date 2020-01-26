@@ -18,4 +18,4 @@ class Product(models.Model):
         return self.body[:100]
 
     def pubDatePretty(self):
-        return self.pubDate.strftimr('%b %e %Y')
+        return self.pubDate.strftime('%b %e %Y')

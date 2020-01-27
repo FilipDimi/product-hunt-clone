@@ -2,6 +2,24 @@
 
 {% block contect %}
 
-Home!
+{% for product in products.all %}
+    <div class="row pt-4">
+        <div class="col-2">
+            <img src="{{ product.icon.url }}" class="img-fluid" onclick="window.location='{% url 'detail' product.id %}'" style="cursor: pointer"/>
+        </div>
+        <div class="col-8" onclick="window.location='{% url 'detail' product.id %}'" style="cursor: pointer">
+            <h2>{{ product.title }}</h2>
+            <p class="pt-2">{{ product.summary }}</p>
+        </div>
+        <div class="col-2 pt-5">
+            <a href="javascript:{document.getElementById('upvote{{product.id}}').submit()}"><button class="btn btn-primary btn-lg btn-block"><span class="oi oi-chevron-top"></span> Vote ({{ product.votesTotal }})</button></a>
+        </div>
+    </div>
+
+    <form id="upvote{{product.id}}" method="POST" action="{% url 'upvote' product.id %}">
+        <input type="hidden">
+    </form>
+    
+{% endfor %}
 
 {% endblock %}
